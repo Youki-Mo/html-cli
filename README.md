@@ -6,7 +6,13 @@
 
 ## 修改node_modules下依赖包的一些代码（可省略）
 这一步为了避免构建工具修改引入外部文件名称，让版本号以条件的形式加入外链
-
+1. 找到node_modules/gulp-rev/index.js
+> `manifest[originalFile] = revisionedFile;`
+> `manifest[originalFile] = revisionedFile + '?v=' + file.revHash;`
+2. 找到node_modules/gulp-rev-collector/index.js
+>
+3. 找到node_modules/rev-path/index.js 
+>
 ```
 // 1. 找到node_modules/gulp-rev/index.js
 manifest[originalFile] = revisionedFile;
