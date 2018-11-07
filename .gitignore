@@ -1,0 +1,22 @@
+.DS_Store
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+bower.json
+bower_components/
+src/css/
+dist/
+build/
+rev/
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.rar
+*.zip
