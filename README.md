@@ -12,19 +12,21 @@
 这一步为了避免构建工具修改引入外部文件名称，让版本号以条件的形式加入外链
 
 1. 找到node_modules/gulp-rev/index.js  
-`manifest[originalFile] = revisionedFile;`  
-改为  
-`manifest[originalFile] = revisionedFile + '?v=' + file.revHash;`
+> manifest[originalFile] = revisionedFile;\
+> ↓ 改为 ↓\
+> manifest[originalFile] = revisionedFile + '?v=' + file.revHash;
 
-2. 找到node_modules/gulp-rev-collector/index.js  
-`var cleanReplacement = path.basename(json[key]).replace(new RegExp( opts.revSuffix ), '' );`  
-改为  
-`var cleanReplacement = path.basename(json[key]).split('?')[0];`
+2. 找到node_modules/gulp-rev-collector/index.js\
+注意 "`var cleanReplacement =`" 等号后面是两个空格，如果找不到换成一个空格
+> var cleanReplacement =&nbsp;&nbsp;path.basename(json[key]).replace(new RegExp( opts.revSuffix ), '' );\
+> ↓ 改为 ↓\
+> var cleanReplacement = path.basename(json[key]).split('?')[0];
+
 
 3. 找到node_modules/rev-path/index.js 
-`return modifyFilename(pth, (filename, ext) => `${filename}${hash}${ext}`);`  
-改为  
-`return modifyFilename(pth, (filename, ext) => `${filename}${ext}`);`
+> modifyFilename(pth, (filename, ext) => \`${filename}-${hash}${ext}\`);\
+> ↓ 改为 ↓\
+> return modifyFilename(pth, (filename, ext) => \`${filename}${ext}\`);
 
 ## 项目相关命令
 1.  运行
